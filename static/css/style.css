@@ -1,0 +1,124 @@
+/* Simple CSS for the website */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/* Global styling (optional) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Home page styling */
+.home {
+    background-color: #bad2f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Horizontally center the content */
+    text-align: center;    /* Center the text */
+    padding: 20px;
+    height: 100vh;         /* Full viewport height */
+    justify-content: flex-start;  /* Align content at the top */
+}
+
+/* Style for the text box specifically for the home page */
+.home .text-box {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    background-color: #fafbfc;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 400px;
+    font-family: monospace;  /* Makes it look like raw text */
+    white-space: pre-wrap;   /* Preserves the formatting of the text file */
+}
+
+/* Anchor page styling */
+.anchor {
+    background-color: #bad2f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 40px;
+}
+
+/* Paper page styling */
+.paper {
+    background-color: #bad2f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 50px;
+    text-align: left;
+}
+
+/* Director page styling */
+.direct {
+    background-color: #bad2f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px;
+    text-align: left;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* report page styling */
+.report {
+    background-color: #bad2f1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px;
+    text-align: left;
+    min-height: 100vh;
+    line-height: 1.6;
+}

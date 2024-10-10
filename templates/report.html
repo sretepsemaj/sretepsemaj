@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - My Flask App{% endblock %}
+
+{% block content %}
+<div class="report">
+    <h2>Hello! I'm the reporter</h2>
+    <p>i go into the internet and pull all the relevant info for the director to edit for you personaly</p>
+    <p>We like to give all sides of objective news the entire stroy with no human sujectiveness</p>
+{% endblock %}
+
+{% if query and response %}
+    <h2>Query: {{ query }}</h2>
+    <h3>Response: {{ response }}</h3>
+{% elif error %}
+    <p>{{ error }}</p>
+{% endif %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}director{% endblock %}
+
+{% block content %}
+<div class="direct">
+    <h2>Hello im the director,</h2>
+    <p> i send out the reporter to get great all the storie on one subject and i can edit them objectivly and never takes side, the the anchorman for a personlised news feed</p>
+{% endblock %}
+
+<h2>Saved Perplexity Response:</h2>
+
+{% if saved_response %}
+    <pre>{{ saved_response }}</pre>
+{% elif error %}
+    <p>{{ error }}</p>
+{% endif %}
