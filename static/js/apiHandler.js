@@ -1,23 +1,34 @@
-document.getElementById("apiForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+window.onload = function() {
+    console.log("Welcome to the report page!");
 
-    const query = document.getElementById("queryInput").value;
+    // Load whitepaper text content (if needed for another section)
+    fetch('/static/whtpaper.txt')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('text-box').textContent = data;
+        })
+        .catch(error => console.error('Error fetching the text file:', error));
+};
 
-    // Send the API request to the server
-    fetch("/api/query", {
-        method: "POST",
+function submitQuery() {
+    const userQuery = document.getElementById('user-query').value;
+
+    fetch('/api/query', {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query: query })  // Send the query as JSON
+        body: JSON.stringify({ query: userQuery })
     })
-    .then(response => response.json())  // Parse the response as JSON
+    .then(response => response.json())
     .then(data => {
-        // Update the page with the API response
-        document.getElementById("result").innerHTML = `<h3>Response: ${data.response}</h3>`;
+        if (data.error) {
+            document.getElementById('api-response').textContent = data.error;
+        } else {
+            document.getElementById('api-response').textContent = JSON.stringify(data.response, null, 2);
+        }
     })
     .catch(error => {
-        console.error("Error:", error);
-        document.getElementById("result").innerHTML = "An error occurred.";
+        document.getElementById('api-response').textContent = 'Error: ' + error;
     });
-});
+}
