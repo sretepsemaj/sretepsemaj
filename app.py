@@ -26,21 +26,35 @@ def process_query():
 
     if not user_query:
         return jsonify({"error": "No query provided"}), 400
-    
-    # Simulate an API call or do actual processing here
+
     headers = {
-        'Authorization': f'Bearer {plex_key}'
+        'Authorization': f'Bearer {plex_key}',
+        'Content-Type': 'application/json'
     }
 
-    # Example external API request (replace with actual API endpoint)
-    response = requests.get(f'https://api.example.com/search?q={user_query}', headers=headers)
+    payload = {
+        "model": "llama-3.1-sonar-large-128k-online",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": user_query}
+        ],
+        "max_tokens": 150,
+        "temperature": 0.2,
+        "top_p": 0.9
+    }
 
-    # Return the result of the API call to the frontend
-    if response.status_code == 200:
-        api_data = response.json()
-        return jsonify({"response": api_data})
-    else:
-        return jsonify({"error": "API request failed"}), 500
+    try:
+        response = requests.post('https://api.perplexity.ai/chat/completions', headers=headers, json=payload)
+
+        if response.status_code == 200:
+            api_data = response.json()
+            return jsonify({"response": api_data})
+        else:
+            return jsonify({"error": f"API request failed with status {response.status_code}"}), 500
+
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 
 @app.route('/direct')
 def direct():
